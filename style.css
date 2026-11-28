@@ -1,0 +1,201 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --muted: #636c76;
+  --border: #d0d7de;
+  --accent: #2563eb;
+  --accent-text: #ffffff;
+  --danger: #c0262d;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1115;
+    --surface: #1a1d23;
+    --text: #e6e8eb;
+    --muted: #9aa4af;
+    --border: #353b45;
+    --accent: #6ea0ff;
+    --accent-text: #0f1115;
+    --danger: #ff7b81;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* display を指定した要素でも hidden 属性が効くようにする */
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  padding: 32px 16px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Yu Gothic UI", Meiryo, sans-serif;
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-size: 1.75rem;
+  letter-spacing: 0.08em;
+}
+
+input[type="text"],
+button {
+  font: inherit;
+  color: inherit;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 12px;
+}
+
+button {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.new-form {
+  display: flex;
+  gap: 8px;
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+.error {
+  margin: 12px 0 0;
+  color: var(--danger);
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0 8px;
+}
+
+.filters button {
+  padding: 4px 14px;
+  border-radius: 999px;
+  color: var(--muted);
+}
+
+.filters button[aria-pressed="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.toggle {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0 4px 0 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.text {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.done .text {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.item .edit-input {
+  padding: 4px 8px;
+}
+
+.item button {
+  padding: 4px 10px;
+  font-size: 0.875rem;
+}
+
+.item .delete {
+  color: var(--danger);
+}
+
+.empty {
+  margin: 0;
+  padding: 24px 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 420px) {
+  body {
+    padding: 8px;
+  }
+
+  .app {
+    padding: 16px;
+  }
+}
